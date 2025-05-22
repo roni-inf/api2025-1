@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ProdutoController.java&apos; to &apos;aula5-relacionamento/src/main/java/org.serratec.backend.controller&apos;&#x0D;&#x0A;- Original project: &apos;aula3-orm&apos;&#x0D;&#x0A;- Destination element: &apos;aula5-relacionamento/src/main/java/org.serratec.backend.controller&apos;&#x0D;&#x0A;- Original element: &apos;org.serratec.backend.controller.ProdutoController.java&apos;" description="Copy compilation unit" destination="=aula5-relacionamento/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.serratec.backend.controller" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.serratec.backend.controller{ProdutoController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1747435171900" units="1" version="1.0"/>
+</session>

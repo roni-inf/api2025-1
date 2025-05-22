@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<section name="java.lang.Class">
+		<item key="selection" value=""/>
+		<item key="replaceBarOpen" value="true"/>
+		<list key="findhistory">
+			<item value="manut"/>
+			<item value="manutencao"/>
+			<item value="Manutencao"/>
+			<item value="proprietario"/>
+			<item value="Proprietario"/>
+			<item value="veiculo"/>
+			<item value="Veiculo"/>
+			<item value="internal"/>
+			<item value="categoria"/>
+			<item value="Categoria"/>
+			<item value="produto"/>
+			<item value="Produto"/>
+			<item value=""/>
+		</list>
+		<list key="replacehistory">
+			<item value="servico"/>
+			<item value="Servico"/>
+			<item value="manutencao"/>
+			<item value="Manutencao"/>
+			<item value="proprietario"/>
+			<item value="Proprietario"/>
+			<item value="combustivel"/>
+			<item value="Combustivel"/>
+			<item value="veiculo"/>
+			<item value="Veiculo"/>
+		</list>
+	</section>
+</section>

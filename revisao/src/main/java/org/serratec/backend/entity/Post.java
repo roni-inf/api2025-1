@@ -1,0 +1,72 @@
+package org.serratec.backend.entity;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class Post {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String mensagem;
+	private Integer curtidas;
+	
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "id_login")
+	private Login login;
+	
+	
+	@OneToMany(mappedBy = "post")
+	@JsonManagedReference
+	private List<Comentario> comentarios;
+
+	
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public Integer getCurtidas() {
+		return curtidas;
+	}
+
+	public void setCurtidas(Integer curtidas) {
+		this.curtidas = curtidas;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+	
+	
+}
