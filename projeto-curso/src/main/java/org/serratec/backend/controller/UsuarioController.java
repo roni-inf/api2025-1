@@ -2,6 +2,8 @@ package org.serratec.backend.controller;
 
 import java.util.List;
 
+import org.serratec.backend.dto.UsuarioRequestDTO;
+import org.serratec.backend.dto.UsuarioResponseDTO;
 import org.serratec.backend.entity.Usuario;
 import org.serratec.backend.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,13 @@ public class UsuarioController {
 	private UsuarioService service;
 
 	@GetMapping
-	public ResponseEntity<List<Usuario>> listar() {
+	public ResponseEntity<List<UsuarioResponseDTO>> listar() {
 		return ResponseEntity.ok(service.listar());
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario inserir(@RequestBody Usuario usuario) {
+	public UsuarioResponseDTO inserir(@RequestBody UsuarioRequestDTO usuario) {
 		return service.inserir(usuario);
 	}
 }
