@@ -1,22 +1,34 @@
 package org.serratec.backend.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import org.serratec.backend.controller.UsuarioController;
 import org.serratec.backend.dto.UsuarioRequestDTO;
 import org.serratec.backend.dto.UsuarioResponseDTO;
 import org.serratec.backend.entity.Usuario;
+import org.serratec.backend.entity.UsuarioPerfil;
 import org.serratec.backend.exception.UsuarioException;
+import org.serratec.backend.repository.UsuarioPerfilRepository;
 import org.serratec.backend.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UsuarioService {
+
 	@Autowired
 	private UsuarioRepository repository;
+
+	@Autowired
+	private PerfilService perfilService;
+
+	@Autowired
+	private UsuarioPerfilRepository usuarioPerfilRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -31,6 +43,7 @@ public class UsuarioService {
 		return usuariosDTO;
 	}
 
+	@Transactional
 	public UsuarioResponseDTO inserir(UsuarioRequestDTO usuario) {
 		Optional<Usuario> u = repository.findByEmail(usuario.getEmail());
 		if (u.isPresent()) {
@@ -42,9 +55,14 @@ public class UsuarioService {
 		usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 		usuarioEntity.setSenha(usuario.getSenha());
 
+		for (UsuarioPerfil up : usuario.getUsuarioPerfis()) {
+			up.setPerfil(perfilService.buscar(up.getPerfil().getId()));
+			up.setUsuario(usuarioEntity);
+			up.setDataCriacao(LocalDate.now());
+		}
 		usuarioEntity = repository.save(usuarioEntity);
+		usuarioPerfilRepository.saveAll(usuario.getUsuarioPerfis());
 
-		return new UsuarioResponseDTO(usuarioEntity.getId(), 
-				usuarioEntity.getNome(), usuarioEntity.getEmail());
+		return new UsuarioResponseDTO(usuarioEntity.getId(), usuarioEntity.getNome(), usuarioEntity.getEmail());
 	}
 }
