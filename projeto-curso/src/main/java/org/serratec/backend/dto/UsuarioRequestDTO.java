@@ -17,6 +17,9 @@ public class UsuarioRequestDTO {
 	@NotBlank
 	private String senha;
 
+	//Regex - para o cep
+	private String cep;
+
 	private Set<UsuarioPerfil> usuarioPerfis = new HashSet<>();
 	
 	
