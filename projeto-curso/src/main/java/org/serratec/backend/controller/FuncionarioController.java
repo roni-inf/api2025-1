@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,15 +34,13 @@ public class FuncionarioController {
 	}
 
 	@GetMapping("/faixa")
-	public Page<FuncionarioResponseDTO> listarPorFaixaSalarial(@RequestParam(defaultValue = "1000") Double faixa1, @RequestParam(defaultValue = "2000") Double faixa2,
-			Pageable pageable) {
+	public Page<FuncionarioResponseDTO> listarPorFaixaSalarial(@RequestParam(defaultValue = "1000") Double faixa1,
+			@RequestParam(defaultValue = "2000") Double faixa2, Pageable pageable) {
 		return service.listarPorPaginaFaixaSalarial(faixa1, faixa2, pageable);
 	}
-	
+
 	@GetMapping("/nome")
-	public Page<FuncionarioResponseDTO> listarPorNome(@RequestParam(defaultValue = "") String nome,
-			Pageable pageable) {
+	public Page<FuncionarioResponseDTO> listarPorNome(@RequestParam(defaultValue = "") String nome, Pageable pageable) {
 		return service.listarPorNome(nome, pageable);
 	}
 }
-	
